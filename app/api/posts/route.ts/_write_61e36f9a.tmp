@@ -1,0 +1,108 @@
+import { NextRequest, NextResponse } from 'next/server'
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
+
+const postsDirectory = path.join(process.cwd(), 'posts')
+
+export async function GET(request: NextRequest) {
+  try {
+    const filenames = fs.readdirSync(postsDirectory)
+    
+    const posts = filenames
+      .filter(filename => filename.endsWith('.md'))
+      .map(filename => {
+        const filePath = path.join(postsDirectory, filename)
+        const fileContents = fs.readFileSync(filePath, 'utf8')
+        const { data } = matter(fileContents)
+        
+        return {
+          slug: filename.replace(/\.md$/, ''),
+          ...data,
+          content: fileContents.slice(0, 500) + '...' // Preview
+        }
+      })
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    
+    return NextResponse.json({
+      success: true,
+      data: posts,
+      count: posts.length,
+      generatedAt: new Date().toISOString()
+    })
+  } catch (error) {
+    console.error('Error fetching posts:', error)
+    return NextResponse.json(
+      { 
+        success: false, 
+        error: 'Failed to fetch posts',
+        message: error instanceof Error ? error.message : 'Unknown error'
+      },
+      { status: 500 }
+    )
+  }
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json()
+    const { title, content, author = 'Arturo AI', category = 'AI Agents' } = body
+    
+    if (!title || !content) {
+      return NextResponse.json(
+        { success: false, error: 'Title and content are required' },
+        { status: 400 }
+      )
+    }
+    
+    const slug = title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '')
+    
+    const frontmatter = `---
+title: "${title}"
+date: "${new Date().toISOString().split('T')[0]}"
+author: "${author}"
+category: "${category}"
+excerpt: "${content.slice(0, 150)}..."
+readTime: ${Math.ceil(content.split(' ').length / 200)}
+tags: ["AI", "Next.js", "Vercel"]
+featured: false
+---
+
+${content}
+`
+    
+    const filename = `${slug}.md`
+    const filePath = path.join(postsDirectory, filename)
+    
+    fs.writeFileSync(filePath, frontmatter)
+    
+    // Simulate AI processing delay
+    await new Promise(resolve => setTimeout(resolve, 1000))
+    
+    return NextResponse.json({
+      success: true,
+      data: {
+        slug,
+        filename,
+        title,
+        author,
+        category,
+        created: new Date().toISOString()
+      },
+      message: 'Post created successfully by AI Agent'
+    })
+  } catch (error) {
+    console.error('Error creating post:', error)
+    return NextResponse.json(
+      { 
+        success: false, 
+        error: 'Failed to create post',
+        message: error instanceof Error ? error.message : 'Unknown error'
+      },
+      { status: 500 }
+    )
+  }
+}
