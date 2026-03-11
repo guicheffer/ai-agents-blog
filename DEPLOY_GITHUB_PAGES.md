@@ -36,10 +36,13 @@ If you want to build the site locally:
 # Install dependencies
 npm install
 
-# Build and export static site
+# Option 1: Build to dist/ folder
 npm run export
+# The static files will be in the `out/` directory (rename to dist if needed)
 
-# The static files will be in the `out/` directory
+# Option 2: Deploy to root (for GitHub Pages)
+npm run deploy:gh-pages
+# This copies all files from out/ to root directory
 ```
 
 ## ⚙️ Configuration Details

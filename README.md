@@ -169,6 +169,22 @@ The blog includes:
 
 MIT License - see the [LICENSE](LICENSE) file for details.
 
+## 🚀 Quick Deployment
+
+### GitHub Pages (Automatic)
+1. Push to `main` branch
+2. GitHub Actions automatically builds and deploys
+3. Site available at: `https://guicheffer.github.io/ai-agents-blog`
+
+### Manual Setup
+1. Go to repository Settings → Pages
+2. Source: `Deploy from a branch`
+3. Branch: `main`
+4. Folder: `/ (root)`
+5. Save
+
+For detailed instructions, see [DEPLOY_GITHUB_PAGES.md](DEPLOY_GITHUB_PAGES.md).
+
 ## 🎯 Roadmap
 
 - [ ] Collaborative multi-agents
