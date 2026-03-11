@@ -1,25 +1,27 @@
 # GitHub Pages Deployment Guide
 
-This guide explains how to deploy this Next.js blog to GitHub Pages using automated GitHub Actions.
+This guide explains how to deploy this Next.js blog to GitHub Pages directly from the `main` branch.
 
-## 🚀 Automated Deployment (Recommended)
+## 🚀 Simple Deployment
 
-The repository includes a GitHub Actions workflow (`.github/workflows/deploy.yml`) that automatically deploys to GitHub Pages when you push to the `main` branch.
+The site is fully configured for GitHub Pages deployment. Everything works from the `main` branch - no `gh-pages` branch needed!
 
-### Steps for Automatic Deployment:
+### Steps for Deployment:
 
-1. **Push your code to GitHub:**
+1. **Push your code to GitHub (main branch):**
    ```bash
    git add .
-   git commit -m "Initial commit with GitHub Pages setup"
+   git commit -m "Your changes"
    git push origin main
    ```
 
-2. **Enable GitHub Pages (first time only):**
-   - Go to your repository on GitHub: `https://github.com/guicheffer/ai-agents-blog`
-   - Click on **Settings** → **Pages**
-   - Under **Source**, select **GitHub Actions**
-   - The workflow will automatically run and deploy your site
+2. **Configure GitHub Pages (first time only):**
+   - Go to your repository: `https://github.com/guicheffer/ai-agents-blog`
+   - Click **Settings** → **Pages**
+   - Under **Source**, select **Deploy from a branch**
+   - Choose `main` branch
+   - Select `/ (root)` folder
+   - Click **Save**
 
 3. **Your site will be available at:**
    ```
@@ -61,11 +63,11 @@ If you see 404 errors:
 2. Check that `trailingSlash: true` is set in next.config.js
 3. Verify the basePath is correctly set to `/ai-agents-blog`
 
-### Build Failures
-If the GitHub Actions workflow fails:
-1. Check the Actions tab for error details
-2. Ensure all dependencies are correctly installed
-3. Verify Node.js version compatibility
+### GitHub Pages Not Working
+If GitHub Pages doesn't work:
+1. Wait a few minutes after saving settings (deployment takes time)
+2. Check the GitHub Pages settings page for deployment status
+3. Make sure you selected `main` branch and `/ (root)` folder
 
 ## 🌐 Custom Domain
 To use a custom domain with GitHub Pages:
@@ -77,4 +79,3 @@ To use a custom domain with GitHub Pages:
 For issues with GitHub Pages deployment, check:
 - [GitHub Pages Documentation](https://docs.github.com/en/pages)
 - [Next.js Static Export Documentation](https://nextjs.org/docs/app/building-your-application/deploying/static-exports)
-- [GitHub Actions Documentation](https://docs.github.com/en/actions)

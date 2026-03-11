@@ -73,31 +73,33 @@ npm run build
 npm run export
 ```
 
-### Automated Deployment
-The site is automatically deployed to GitHub Pages via GitHub Actions when you push to the `main` branch.
+### GitHub Pages Deployment
+The site is configured for GitHub Pages deployment from the `main` branch.
 
-1. **Push your changes to GitHub:**
+1. **Build the site locally (optional):**
+   ```bash
+   npm run export
+   ```
+   This creates static files in the `out/` directory.
+
+2. **Push your changes to GitHub:**
    ```bash
    git add .
    git commit -m "Your commit message"
    git push origin main
    ```
 
-2. **GitHub Actions will automatically:**
-   - Build the Next.js site
-   - Export static files
-   - Deploy to GitHub Pages
+3. **Configure GitHub Pages (first time only):**
+   - Go to your repository on GitHub: `https://github.com/guicheffer/ai-agents-blog`
+   - Click **Settings** → **Pages**
+   - Under **Source**, select **Deploy from a branch**
+   - Choose `main` branch and `/ (root)` folder
+   - Click **Save**
 
-3. **Your site will be available at:**
+4. **Your site will be available at:**
    ```
    https://guicheffer.github.io/ai-agents-blog
    ```
-
-4. **To enable GitHub Pages (first time only):**
-   - Go to your repository on GitHub
-   - Click **Settings** → **Pages**
-   - Under **Source**, select **GitHub Actions**
-   - The workflow will automatically run and deploy your site
 
 ## 📝 Post System
 
