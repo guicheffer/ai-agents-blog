@@ -36,9 +36,28 @@ A modern blog about AI Agents built with Next.js 14 and deployed to GitHub Pages
 - Deploys on every push to main branch
 - Free hosting on GitHub Pages
 - Custom domain support
+- **Static build in `/dist` directory** - ready to serve from any web server
 
 ## 🏗️ Project Structure
 
+```
+ai-agents-blog/
+├── app/                    # App Router
+│   ├── api/               # API Routes
+│   ├── posts/             # Post pages
+│   └── components/        # App components
+├── components/            # Shared components
+├── posts/                 # Markdown content
+├── public/                # Static assets
+├── dist/                  # Static build output (generated)
+│   ├── index.html         # Main homepage
+│   ├── about.html         # About page
+│   ├── styles.css         # Main stylesheet
+│   └── README.md          # Build instructions
+├── .github/workflows/     # GitHub Actions
+├── next.config.js         # Next.js config
+├── package.json           # Dependencies
+└── README.md              # This file
 ```
 ai-agents-blog/
 ├── app/                    # App Router
@@ -100,6 +119,45 @@ The site is configured for GitHub Pages deployment from the `main` branch.
    ```
    https://guicheffer.github.io/ai-agents-blog
    ```
+
+## 📁 Static Build in `/dist` Directory
+
+The project automatically generates a static build in the `/dist` directory, ready to serve from any web server.
+
+### 🚀 Using the `/dist` Build
+
+1. **Automatic Generation:**
+   - GitHub Actions builds to `/dist` on every push to `main`
+   - Manual build: `npm run build:dist`
+
+2. **Directory Structure:**
+   ```
+   /dist/
+   ├── index.html          # Main homepage
+   ├── about.html          # About page  
+   ├── styles.css          # Main stylesheet
+   └── README.md           # Build instructions
+   ```
+
+3. **Serving Options:**
+   - **Direct file serving:** Point any web server to `/dist`
+   - **GitHub Pages:** Configure to serve from `/dist`
+   - **CDN/Static hosting:** Upload `/dist` to Vercel, Netlify, etc.
+
+4. **GitHub Actions Workflow:**
+   - `.github/workflows/deploy-dist.yml`
+   - Builds on push to `main`
+   - Uploads `/dist` as artifact
+   - Optional GitHub Pages deployment
+
+### 🔧 Manual Build to `/dist`
+```bash
+# Clean and build to /dist
+npm run build:dist
+
+# Check the generated files
+ls -la dist/
+```
 
 ## 📝 Post System
 

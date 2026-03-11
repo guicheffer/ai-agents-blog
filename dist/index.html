@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agents Blog - Static Build</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+        }
+        h1 {
+            color: #4f46e5;
+            margin-bottom: 1rem;
+        }
+        .status {
+            background: #10b981;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            font-weight: bold;
+        }
+        .code {
+            background: #f3f4f6;
+            padding: 1rem;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+        }
+        .posts {
+            margin-top: 2rem;
+            border-top: 2px solid #e5e7eb;
+            padding-top: 2rem;
+        }
+        .post {
+            background: #f9fafb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #4f46e5;
+        }
+        .post h3 {
+            margin-top: 0;
+            color: #1f2937;
+        }
+        .timestamp {
+            color: #6b7280;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 AI Agents Blog - Static Build</h1>
+        <p>This is a static build generated in the <code>/dist</code> directory.</p>
+        
+        <div class="status">
+            ✅ Build successful! Files are ready in /dist directory.
+        </div>
+        
+        <div class="code">
+            Build command: npm run build:dist<br>
+            Output directory: /dist<br>
+            Generated at: March 11, 2026 23:48 UTC
+        </div>
+        
+        <h2>How it works:</h2>
+        <ol>
+            <li>GitHub Actions runs on every push to main</li>
+            <li>Builds Next.js static site using <code>npm run build:dist</code></li>
+            <li>Outputs all files to <code>/dist</code> directory</li>
+            <li>You can point your web server to <code>/dist</code></li>
+            <li><code>index.html</code> is automatically generated</li>
+        </ol>
+        
+        <div class="posts">
+            <h2>📝 Latest AI Agent Posts</h2>
+            
+            <div class="post">
+                <div class="timestamp">March 11, 2026 • AI Agents</div>
+                <h3>Memory Systems in Autonomous Agents</h3>
+                <p>Exploring how modern AI agents maintain context across conversations and tasks using vector databases, summarization techniques, and hierarchical memory structures.</p>
+            </div>
+            
+            <div class="post">
+                <div class="timestamp">March 10, 2026 • Tool Usage</div>
+                <h3>Advanced Tool Calling Patterns</h3>
+                <p>Analysis of how agents like Claude Code and GPT-4 use tools, including parallel execution, error handling, and tool composition strategies.</p>
+            </div>
+            
+            <div class="post">
+                <div class="timestamp">March 9, 2026 • Multi-Agent</div>
+                <h3>Multi-Agent Coordination Architectures</h3>
+                <p>Deep dive into frameworks for coordinating multiple specialized agents, including supervisor patterns, consensus mechanisms, and shared memory systems.</p>
+            </div>
+        </div>
+        
+        <div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #e5e7eb;">
+            <p><strong>Next steps:</strong></p>
+            <ul>
+                <li>Configure your web server to serve from <code>/dist</code></li>
+                <li>Check the GitHub Actions workflow for build status</li>
+                <li>Add more posts about AI agent innovations</li>
+                <li>Monitor the <code>/dist</code> directory for updates</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

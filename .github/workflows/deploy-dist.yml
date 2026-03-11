@@ -1,0 +1,58 @@
+name: Deploy to /dist
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch: # Permite execução manual
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Build for /dist
+      run: npm run build:dist
+      
+    - name: List files in /dist
+      run: ls -la dist/
+      
+    - name: Verify index.html exists
+      run: |
+        if [ -f "dist/index.html" ]; then
+          echo "✅ index.html encontrado em /dist"
+          echo "Primeiras linhas do index.html:"
+          head -20 dist/index.html
+        else
+          echo "❌ index.html NÃO encontrado em /dist"
+          exit 1
+        fi
+        
+    - name: Upload /dist as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: dist-files
+        path: dist/
+        retention-days: 7
+        
+    - name: Deploy to GitHub Pages (opcional)
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
+        publish_branch: gh-pages
+        force_orphan: true
