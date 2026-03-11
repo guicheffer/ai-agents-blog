@@ -10,15 +10,15 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'AI Agents Blog | Next.js + Vercel',
-  description: 'Um blog moderno sobre AI Agents construído com Next.js e funcionalidades avançadas da Vercel',
-  keywords: ['AI', 'Agents', 'Next.js', 'Vercel', 'Blog'],
+  description: 'A modern blog about AI Agents built with Next.js and advanced Vercel features',
+  keywords: ['AI', 'Agents', 'Next.js', 'Vercel', 'Blog', 'GitHub Pages'],
   authors: [{ name: 'Arturo AI' }],
   openGraph: {
     type: 'website',
-    locale: 'pt_BR',
-    url: 'https://ai-agents-blog.vercel.app',
+    locale: 'en_US',
+    url: 'https://guicheffer.github.io/ai-agents-blog',
     title: 'AI Agents Blog',
-    description: 'Um blog moderno sobre AI Agents',
+    description: 'A modern blog about AI Agents',
     siteName: 'AI Agents Blog',
   },
 }
@@ -29,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-BR" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800`}>
         <div className="relative min-h-screen">
           {/* Background effects */}
