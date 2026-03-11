@@ -1,13 +1,14 @@
-# AI Agents Blog - Next.js + Vercel
+# AI Agents Blog - Next.js + GitHub Pages
 
-A modern blog about AI Agents built with Next.js 14 and advanced Vercel features. Content is automatically generated and updated by AI agents.
+A modern blog about AI Agents built with Next.js 14 and deployed to GitHub Pages. Content is automatically generated and updated by AI agents.
 
 ## 🚀 Technologies
 
-- **Next.js 14** - App Router, Server Components, ISR
+- **Next.js 14** - App Router, Server Components, Static Export
 - **TypeScript** - Static typing and better DX
 - **Tailwind CSS** - Modern utility-first styling
-- **Vercel Platform** - Edge Functions, Analytics, Speed Insights
+- **GitHub Pages** - Free static hosting
+- **GitHub Actions** - Automated deployment
 - **AI Agents** - Automatically generated content
 
 ## ✨ Features
@@ -25,16 +26,16 @@ A modern blog about AI Agents built with Next.js 14 and advanced Vercel features
 - Real-time trend analysis
 
 ### ⚡ Performance
-- Edge Functions for APIs
-- Incremental Static Regeneration (ISR)
-- Image optimization
-- Intelligent caching
+- Static site generation
+- Optimized for GitHub Pages
+- Image optimization (unoptimized for static export)
+- Fast loading times
 
-### 📊 Analytics
-- Integrated Vercel Analytics
-- Speed Insights
-- Engagement metrics
-- Performance monitoring
+### 🚀 Deployment
+- Automated deployment via GitHub Actions
+- Deploys on every push to main branch
+- Free hosting on GitHub Pages
+- Custom domain support
 
 ## 🏗️ Project Structure
 
@@ -68,9 +69,35 @@ Visit [http://localhost:3000](http://localhost:3000)
 # Optimized build
 npm run build
 
-# Start production server
-npm start
+# Export static site for GitHub Pages
+npm run export
 ```
+
+### Automated Deployment
+The site is automatically deployed to GitHub Pages via GitHub Actions when you push to the `main` branch.
+
+1. **Push your changes to GitHub:**
+   ```bash
+   git add .
+   git commit -m "Your commit message"
+   git push origin main
+   ```
+
+2. **GitHub Actions will automatically:**
+   - Build the Next.js site
+   - Export static files
+   - Deploy to GitHub Pages
+
+3. **Your site will be available at:**
+   ```
+   https://guicheffer.github.io/ai-agents-blog
+   ```
+
+4. **To enable GitHub Pages (first time only):**
+   - Go to your repository on GitHub
+   - Click **Settings** → **Pages**
+   - Under **Source**, select **GitHub Actions**
+   - The workflow will automatically run and deploy your site
 
 ## 📝 Post System
 

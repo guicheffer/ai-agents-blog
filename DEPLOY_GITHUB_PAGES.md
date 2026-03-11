@@ -1,13 +1,8 @@
 # GitHub Pages Deployment Guide
 
-This guide explains how to deploy this Next.js blog to GitHub Pages.
+This guide explains how to deploy this Next.js blog to GitHub Pages using automated GitHub Actions.
 
-## Prerequisites
-
-1. A GitHub repository named `ai-agents-blog` (already created)
-2. GitHub Pages enabled on the repository
-
-## Automatic Deployment (Recommended)
+## 🚀 Automated Deployment (Recommended)
 
 The repository includes a GitHub Actions workflow (`.github/workflows/deploy.yml`) that automatically deploys to GitHub Pages when you push to the `main` branch.
 
@@ -20,7 +15,7 @@ The repository includes a GitHub Actions workflow (`.github/workflows/deploy.yml
    git push origin main
    ```
 
-2. **Enable GitHub Pages:**
+2. **Enable GitHub Pages (first time only):**
    - Go to your repository on GitHub: `https://github.com/guicheffer/ai-agents-blog`
    - Click on **Settings** → **Pages**
    - Under **Source**, select **GitHub Actions**
@@ -31,33 +26,21 @@ The repository includes a GitHub Actions workflow (`.github/workflows/deploy.yml
    https://guicheffer.github.io/ai-agents-blog
    ```
 
-## Manual Deployment
+## 🔧 Manual Build (Optional)
 
-If you prefer to deploy manually:
+If you want to build the site locally:
 
-1. **Build and export the site:**
-   ```bash
-   npm run export
-   ```
+```bash
+# Install dependencies
+npm install
 
-2. **Create a `gh-pages` branch:**
-   ```bash
-   git checkout --orphan gh-pages
-   git rm -rf .
-   cp -r out/* .
-   touch .nojekyll
-   git add .
-   git commit -m "Deploy to GitHub Pages"
-   git push origin gh-pages
-   ```
+# Build and export static site
+npm run export
 
-3. **Configure GitHub Pages:**
-   - Go to repository Settings → Pages
-   - Select **Deploy from a branch**
-   - Choose `gh-pages` branch and `/ (root)` folder
-   - Click **Save**
+# The static files will be in the `out/` directory
+```
 
-## Important Notes
+## ⚙️ Configuration Details
 
 ### Base Path Configuration
 The site is configured to use `/ai-agents-blog` as the base path for GitHub Pages. This means:
@@ -70,7 +53,7 @@ The `.nojekyll` file tells GitHub Pages not to use Jekyll processing, which is r
 ### Image Optimization
 For GitHub Pages, image optimization is disabled (`unoptimized: true` in next.config.js) because Next.js image optimization requires a Node.js server.
 
-## Troubleshooting
+## 🐛 Troubleshooting
 
 ### 404 Errors
 If you see 404 errors:
@@ -84,13 +67,13 @@ If the GitHub Actions workflow fails:
 2. Ensure all dependencies are correctly installed
 3. Verify Node.js version compatibility
 
-## Custom Domain
+## 🌐 Custom Domain
 To use a custom domain with GitHub Pages:
 1. Add a `CNAME` file to the `public/` folder with your domain
 2. Configure DNS settings with your domain provider
 3. Update the `basePath` in `next.config.js` if needed
 
-## Support
+## 📚 Support
 For issues with GitHub Pages deployment, check:
 - [GitHub Pages Documentation](https://docs.github.com/en/pages)
 - [Next.js Static Export Documentation](https://nextjs.org/docs/app/building-your-application/deploying/static-exports)
