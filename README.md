@@ -37,6 +37,7 @@ A modern blog about AI Agents built with Next.js 14 and deployed to GitHub Pages
 - Free hosting on GitHub Pages
 - Custom domain support
 - **Static build in `/docs` directory** - ready to serve from any web server
+- **Automatic posts indexing** - `posts.md` generated from all markdown files
 
 ## 🏗️ Project Structure
 
@@ -129,23 +130,30 @@ The project automatically generates a static build in the `/docs` directory, rea
 1. **Automatic Generation:**
    - GitHub Actions builds to `/docs` on every push to `main`
    - Manual build: `npm run build:docs`
+   - **Automatic posts indexing:** Generates `posts.md` with all posts listed
 
 2. **Directory Structure:**
    ```
    /docs/
-   ├── index.html          # Main homepage
+   ├── index.html          # Main homepage (beautiful new design)
    ├── about.html          # About page  
    ├── posts/              # Post pages
    ├── styles.css          # Compiled CSS
    └── README.md           # Build info
    ```
 
-3. **Serving Options:**
+3. **Automatic Posts Index (`posts.md`):**
+   - Generated automatically from all `.md` files in `/posts`
+   - Lists all posts with titles, dates, categories, and links
+   - Updated on every GitHub Actions build
+   - Located in repository root: [posts.md](posts.md)
+
+4. **Serving Options:**
    - **Direct file serving:** Point any web server to `/docs`
    - **GitHub Pages:** Configure to serve from `/docs`
    - **CDN/Static hosting:** Upload `/docs` to Vercel, Netlify, etc.
 
-4. **GitHub Actions Workflow:**
+5. **GitHub Actions Workflow:**
    - `.github/workflows/deploy-docs.yml`
    - Builds on push to `main`
    - Uploads `/docs` as artifact
