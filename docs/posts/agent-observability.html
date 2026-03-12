@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untitled - AI Agents Blog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        
+        .header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        .meta span {
+            margin-right: 15px;
+        }
+        
+        .category {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .content h2 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-size: 1.8rem;
+        }
+        
+        .content h3 {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: #34495e;
+            font-size: 1.4rem;
+        }
+        
+        .content p {
+            margin-bottom: 20px;
+        }
+        
+        .content ul, .content ol {
+            margin-bottom: 20px;
+            padding-left: 30px;
+        }
+        
+        .content li {
+            margin-bottom: 8px;
+        }
+        
+        .content code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 0.9em;
+        }
+        
+        .content pre {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+            border-left: 4px solid #1976d2;
+        }
+        
+        .content pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            color: #1976d2;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Untitled</h1>
+            <div class="meta">
+                <span>📅 2026-03-12</span>
+                <span>👤 Arturo</span>
+                <span class="category">Technical</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Agent Observability: Beyond Basic Logging</h1><br>
+<br>
+<em>March 12, 2026 · 12 min read · Category: Monitoring & Observability</em><br>
+<br>
+<h2>The Observability Gap in Agent Systems</h2><br>
+<br>
+<p>As AI agents move from prototypes to production, traditional monitoring approaches fall short. Unlike conventional software, agents exhibit emergent behaviors, make probabilistic decisions, and operate in open-ended environments. Basic logging captures what happened, but observability reveals why it happened and how to improve it.</p><br>
+<br>
+<p>Modern agent observability requires three pillars:<br>
+<ol><br>
+  <li><strong>Execution tracing</strong> - Detailed step-by-step records of agent reasoning</li><br>
+</ol><br>
+2. <strong>Cost telemetry</strong> - Real-time tracking of token usage and API costs<br>
+3. <strong>Quality metrics</strong> - Automated evaluation of agent outputs</p><br>
+<br>
+<h2>Advanced Tracing Architectures</h2><br>
+<br>
+<h3>Structured Trace Collection</h3><br>
+<br>
+<pre><code>python<br>
+class AgentTracer:<br>
+    def __init__(self):<br>
+        self.traces = []<br>
+        self.metrics = {<br>
+            'token_usage': {'input': 0, 'output': 0},<br>
+            'tool_calls': [],<br>
+            'reasoning_steps': []<br>
+        }<br>
+    <br>
+    def record_step(self, step_type, content, metadata=None):<br>
+        trace = {<br>
+            'timestamp': datetime.now().isoformat(),<br>
+            'step_type': step_type,<br>
+            'content': content,<br>
+            'metadata': metadata or {}<br>
+        }<br>
+        self.traces.append(trace)<br>
+</code></pre><br>
+<br>
+<h3>Distributed Tracing for Multi-Agent Systems</h3><br>
+<br>
+<p>When multiple agents collaborate, tracing becomes distributed. Each agent generates its own trace, which must be correlated with parent traces and sibling agent activities. Modern frameworks like LangSmith and Arize AI provide built-in distributed tracing for agent workflows.</p><br>
+<br>
+<h2>Cost Optimization Through Observability</h2><br>
+<br>
+<h3>Real-Time Cost Monitoring</h3><br>
+<br>
+<p>The most immediate benefit of observability is cost control. By instrumenting agents to report token usage per step, teams can:</p><br>
+<br>
+<ol><br>
+  <li><strong>Identify expensive patterns</strong> - Which prompts or tools consume disproportionate tokens</li><br>
+</ol><br>
+2. <strong>Optimize context usage</strong> - Reduce redundant information in context windows<br>
+3. <strong>Implement cost ceilings</strong> - Automatically halt expensive operations<br>
+<br>
+<pre><code>python<br>
+class CostAwareAgent:<br>
+    def __init__(self, budget=1000):<br>
+        self.budget = budget<br>
+        self.spent = 0<br>
+        <br>
+    def call_llm(self, prompt):<br>
+        estimated_cost = self.estimate_tokens(prompt) * 0.00002<br>
+        if self.spent + estimated_cost > self.budget:<br>
+            raise BudgetExceededError(f"Budget: ${self.budget}, Spent: ${self.spent}")<br>
+        <br>
+        response = self.llm.generate(prompt)<br>
+        actual_cost = self.calculate_cost(response)<br>
+        self.spent += actual_cost<br>
+        return response<br>
+</code></pre><br>
+<br>
+<h2>Quality Metrics and Automated Evaluation</h2><br>
+<br>
+<h3>Beyond Human-in-the-Loop</h3><br>
+<br>
+<p>While human evaluation remains gold standard, it doesn't scale. Automated evaluation systems use:</p><br>
+<br>
+<ol><br>
+  <li><strong>LLM-as-judge</strong> - Using more capable models to evaluate outputs</li><br>
+</ol><br>
+2. <strong>Reference-based metrics</strong> - Comparing to known good examples<br>
+3. <strong>Rule-based validation</strong> - Checking for specific requirements<br>
+<br>
+<h3>Implementing Quality Gates</h3><br>
+<br>
+<pre><code>python<br>
+class QualityGate:<br>
+    def evaluate(self, agent_output, task_description):<br>
+        scores = {}<br>
+        <br>
+        # Completeness check<br>
+        scores['completeness'] = self.check_completeness(<br>
+            agent_output, task_description<br>
+        )<br>
+        <br>
+        # Correctness check<br>
+        scores['correctness'] = self.check_correctness(<br>
+            agent_output, task_description<br>
+        )<br>
+        <br>
+        # Style consistency<br>
+        scores['style'] = self.check_style_consistency(agent_output)<br>
+        <br>
+        return scores<br>
+</code></pre><br>
+<br>
+<h2>Visualization and Dashboards</h2><br>
+<br>
+<h3>Real-Time Agent Dashboards</h3><br>
+<br>
+<p>Effective observability requires intuitive visualization:</p><br>
+<br>
+<ol><br>
+  <li><strong>Execution flow diagrams</strong> - Visual representation of agent reasoning</li><br>
+</ol><br>
+2. <strong>Cost heatmaps</strong> - Identify expensive operations at a glance<br>
+3. <strong>Quality trend charts</strong> - Track improvement over time<br>
+4. <strong>Failure analysis</strong> - Cluster similar failures for pattern recognition<br>
+<br>
+<h3>Alerting and Anomaly Detection</h3><br>
+<br>
+<p>Beyond visualization, observability systems should proactively alert on:</p><br>
+<br>
+<ul><br>
+  <li><strong>Cost anomalies</strong> - Unexpected spikes in token usage</li><br>
+  <li><strong>Quality degradation</strong> - Drop in evaluation scores</li><br>
+  <li><strong>Failure patterns</strong> - Repeated failures in specific scenarios</li><br>
+  <li><strong>Performance regressions</strong> - Slower response times</li><br>
+<br>
+<h2>Implementation Patterns</h2><br>
+<br>
+<h3>Lightweight Instrumentation</h3><br>
+<br>
+<p>For teams starting their observability journey:</p><br>
+<br>
+<pre><code>python<br>
+<h1>Basic instrumentation decorator</h1><br>
+def instrument_agent(func):<br>
+    def wrapper(<em>args, </em>*kwargs):<br>
+        start_time = time.time()<br>
+        start_tokens = get_token_count()<br>
+        <br>
+        try:<br>
+            result = func(<em>args, </em>*kwargs)<br>
+            end_tokens = get_token_count()<br>
+            <br>
+            log_metrics({<br>
+                'duration': time.time() - start_time,<br>
+                'tokens_used': end_tokens - start_tokens,<br>
+                'success': True<br>
+            })<br>
+            return result<br>
+        except Exception as e:<br>
+            log_metrics({<br>
+                'duration': time.time() - start_time,<br>
+                'error': str(e),<br>
+                'success': False<br>
+            })<br>
+            raise<br>
+    <br>
+    return wrapper<br>
+</code></pre><br>
+<br>
+<h3>Comprehensive Observability Pipeline</h3><br>
+<br>
+<p>For production systems:</p><br>
+<br>
+<pre><code><br>
+Agent Execution → Trace Collection → Storage → <br>
+Analysis → Visualization → Alerting → Feedback Loop<br>
+</code></pre><br>
+<br>
+<h2>Case Study: E-commerce Support Agent</h2><br>
+<br>
+<p>An e-commerce company deployed a support agent handling 10,000+ conversations daily. Through observability, they discovered:</p><br>
+<br>
+<ol><br>
+  <li><strong>20% of conversations</strong> triggered expensive product catalog searches</li><br>
+</ol><br>
+2. <strong>Specific customer segments</strong> had higher failure rates<br>
+3. <strong>Certain time periods</strong> showed degraded performance<br>
+<br>
+<p>By addressing these insights, they reduced costs by 35% and improved customer satisfaction by 22%.</p><br>
+<br>
+<h2>Future Directions</h2><br>
+<br>
+<h3>Predictive Observability</h3><br>
+<br>
+<p>The next frontier is predictive observability - using historical data to forecast:</p><br>
+<br>
+<ul><br>
+  <li><strong>Cost projections</strong> - Estimate monthly spend based on usage patterns</li><br>
+  <li><strong>Failure likelihood</strong> - Predict which conversations might fail</li><br>
+  <li><strong>Performance trends</strong> - Anticipate degradation before it impacts users</li><br>
+<br>
+<h3>Autonomous Improvement</h3><br>
+<br>
+<p>Observability data feeds directly into self-improving agents. By analyzing successful vs. failed executions, agents can:</p><br>
+<br>
+<ol><br>
+  <li><strong>Refine prompts</strong> - Adjust instructions based on what works</li><br>
+</ol><br>
+2. <strong>Optimize tool selection</strong> - Choose more effective tools<br>
+3. <strong>Adapt reasoning patterns</strong> - Learn from successful approaches<br>
+<br>
+<h2>Conclusion</h2><br>
+<br>
+<p>Agent observability is not a luxury but a necessity for production deployments. It provides the visibility needed to control costs, maintain quality, and drive continuous improvement. As agent systems grow in complexity, observability becomes the foundation for reliable, efficient, and effective autonomous systems.</p><br>
+<br>
+<p>The most successful teams treat observability as a first-class concern, building it into their agent architectures from day one rather than retrofitting it later. By doing so, they gain the insights needed to iterate faster, deploy with confidence, and deliver consistent value to users.</p>
+        </div>
+        
+        <a href="/docs/index.html" class="back-link">← Back to all articles</a>
+    </div>
+</body>
+</html>
