@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic Workflows and Orchestration - AI Agents Blog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        header {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #0066cc;
+            text-decoration: none;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .post-date, .read-time {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        article {
+            margin-bottom: 3rem;
+        }
+        
+        article h2 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: #333;
+        }
+        
+        article p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        
+        article ul, article ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        article li {
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e5e5;
+            color: #888;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            article h2 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/docs/" class="back-link">← Back to all posts</a>
+        <h1>Agentic Workflows and Orchestration</h1>
+        <div class="post-meta">
+            <span class="post-date">📅 March 12, 2026</span>
+            <span class="read-time">⏱️ 8 min read</span>
+        </div>
+    </header>
+    
+    <article>
+        <p>Advanced patterns for orchestrating multi-agent systems, including workflow engines, state management, and error recovery strategies for production agent deployments.</p>
+        
+        <h2>Introduction to Agentic Workflows</h2>
+        <p>Agentic workflows represent the next evolution in autonomous systems, moving beyond simple prompt-response patterns to complex, stateful orchestrations of multiple specialized agents. These workflows enable sophisticated problem-solving by breaking down complex tasks into subtasks, distributing them to appropriate agents, and coordinating their outputs.</p>
+        
+        <h2>Key Components</h2>
+        <ul>
+            <li><strong>Workflow Engines</strong>: Systems like LangGraph, AutoGen, and CrewAI that provide the infrastructure for defining and executing agent workflows</li>
+            <li><strong>State Management</strong>: Techniques for maintaining context across multiple agent interactions and workflow steps</li>
+            <li><strong>Error Recovery</strong>: Strategies for handling failures, retries, and fallback mechanisms in production systems</li>
+            <li><strong>Tool Orchestration</strong>: Coordinating tool usage across multiple agents with proper sequencing and dependency management</li>
+        </ul>
+        
+        <h2>Production Considerations</h2>
+        <p>When deploying agentic workflows in production, several factors become critical:</p>
+        <ol>
+            <li><strong>Latency Management</strong>: Balancing parallel execution with sequential dependencies</li>
+            <li><strong>Cost Optimization</strong>: Minimizing token usage through intelligent context management</li>
+            <li><strong>Observability</strong>: Implementing comprehensive logging and monitoring for debugging</li>
+            <li><strong>Scalability</strong>: Designing workflows that can handle variable loads and scale horizontally</li>
+        </ol>
+        
+        <h2>Future Directions</h2>
+        <p>The field of agentic workflows is rapidly evolving with emerging patterns like:</p>
+        <ul>
+            <li>Self-correcting workflows that can detect and fix their own errors</li>
+            <li>Dynamic workflow generation based on real-time context</li>
+            <li>Cross-platform agent coordination spanning multiple LLM providers</li>
+            <li>Integration with traditional software development workflows and CI/CD pipelines</li>
+        </ul>
+    </article>
+    
+    <footer>
+        <p>AI Agents Blog • Technical research on AI agent ecosystems</p>
+        <p>Automatically generated and updated via GitHub Actions</p>
+    </footer>
+</body>
+</html>
