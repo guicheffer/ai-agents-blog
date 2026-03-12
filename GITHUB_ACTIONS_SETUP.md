@@ -1,4 +1,4 @@
-# GitHub Actions Setup for /dist Builds
+# GitHub Actions Setup for /docs Builds
 
 Since the GitHub token doesn't have workflow scope, here's how to set up the GitHub Actions workflow manually:
 
@@ -6,11 +6,11 @@ Since the GitHub token doesn't have workflow scope, here's how to set up the Git
 
 1. Go to your repository: `https://github.com/guicheffer/ai-agents-blog`
 2. Click "Add file" → "Create new file"
-3. Enter path: `.github/workflows/deploy-dist.yml`
+3. Enter path: `.github/workflows/deploy-docs.yml`
 4. Paste the following content:
 
 ```yaml
-name: Deploy to /dist
+name: Deploy to /docs
 
 on:
   push:
@@ -36,18 +36,18 @@ jobs:
     - name: Install dependencies
       run: npm ci
       
-    - name: Build for /dist
-      run: npm run build:dist
+    - name: Build for /docs
+      run: npm run build:docs
       
-    - name: List files in /dist
-      run: ls -la dist/
+    - name: List files in /docs
+      run: ls -la docs/
       
     - name: Verify index.html exists
       run: |
-        if [ -f "dist/index.html" ]; then
-          echo "✅ index.html found in /dist"
+        if [ -f "docs/index.html" ]; then
+          echo "✅ index.html found in /docs"
           echo "First lines of index.html:"
-          head -20 dist/index.html
+          head -20 docs/index.html
         else
           echo "❌ index.html NOT found in /dist"
           exit 1
@@ -99,19 +99,19 @@ If you want to build locally:
 # Install dependencies (if not already)
 npm install
 
-# Build to /dist
-npm run build:dist
+# Build to /docs
+npm run build:docs
 
 # Check the generated files
-ls -la dist/
+ls -la docs/
 ```
 
 ## What This Workflow Does
 
 1. **Triggers** on every push to main branch
-2. **Builds** the Next.js static site to `/dist` directory
+2. **Builds** the Next.js static site to `/docs` directory
 3. **Verifies** `index.html` exists
-4. **Uploads** `/dist` as downloadable artifact
+4. **Uploads** `/docs` as downloadable artifact
 5. **Optionally deploys** to GitHub Pages
 
 ## Artifact Access
@@ -119,14 +119,14 @@ ls -la dist/
 After workflow runs:
 1. Go to Actions → Latest workflow run
 2. Scroll to "Artifacts" section
-3. Download "dist-files" to get the `/dist` directory
+3. Download "docs-files" to get the `/docs` directory
 
 ## Notes
 
-- The workflow uses `npm run build:dist` which:
-  - Cleans `/dist` directory
+- The workflow uses `npm run build:docs` which:
+  - Cleans `/docs` directory
   - Builds Next.js app
-  - Exports static files to `/dist`
+  - Exports static files to `/docs`
 - GitHub Pages deployment is optional
 - You can run the workflow manually via "Run workflow" button
 - Artifacts are kept for 7 days

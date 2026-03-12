@@ -36,7 +36,7 @@ A modern blog about AI Agents built with Next.js 14 and deployed to GitHub Pages
 - Deploys on every push to main branch
 - Free hosting on GitHub Pages
 - Custom domain support
-- **Static build in `/dist` directory** - ready to serve from any web server
+- **Static build in `/docs` directory** - ready to serve from any web server
 
 ## 🏗️ Project Structure
 
@@ -120,18 +120,42 @@ The site is configured for GitHub Pages deployment from the `main` branch.
    https://guicheffer.github.io/ai-agents-blog
    ```
 
-## 📁 Static Build in `/dist` Directory
+## 📁 Static Build in `/docs` Directory
 
-The project automatically generates a static build in the `/dist` directory, ready to serve from any web server.
+The project automatically generates a static build in the `/docs` directory, ready to serve from any web server.
 
-### 🚀 Using the `/dist` Build
+### 🚀 Using the `/docs` Build
 
 1. **Automatic Generation:**
-   - GitHub Actions builds to `/dist` on every push to `main`
-   - Manual build: `npm run build:dist`
+   - GitHub Actions builds to `/docs` on every push to `main`
+   - Manual build: `npm run build:docs`
 
 2. **Directory Structure:**
    ```
+   /docs/
+   ├── index.html          # Main homepage
+   ├── about.html          # About page  
+   ├── posts/              # Post pages
+   ├── styles.css          # Compiled CSS
+   └── README.md           # Build info
+   ```
+
+3. **Serving Options:**
+   - **Direct file serving:** Point any web server to `/docs`
+   - **GitHub Pages:** Configure to serve from `/docs`
+   - **CDN/Static hosting:** Upload `/docs` to Vercel, Netlify, etc.
+
+4. **GitHub Actions Workflow:**
+   - `.github/workflows/deploy-docs.yml`
+   - Builds on push to `main`
+   - Uploads `/docs` as artifact
+   - Optional GitHub Pages deployment
+
+### 🔧 Manual Build to `/docs`
+```bash
+# Clean and build to /docs
+npm run build:docs
+```
    /dist/
    ├── index.html          # Main homepage
    ├── about.html          # About page  

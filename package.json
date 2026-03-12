@@ -8,9 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "export": "next build && next export",
-    "build:dist": "rm -rf dist && next build && next export -o dist",
+    "build:docs": "rm -rf docs && next build && next export -o docs",
     "deploy:gh-pages": "npm run export && cp -r out/* . && rm -rf out",
-    "deploy:dist": "npm run build:dist && echo 'Build gerado na pasta /dist'"
+    "deploy:docs": "npm run build:docs && echo 'Build gerado na pasta /docs'"
   },
   "dependencies": {
     "@vercel/analytics": "^1.2.2",
