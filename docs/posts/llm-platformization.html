@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Platformization: How AI Models Are Becoming Developer Platforms - AI Agents Blog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        
+        .header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        .meta span {
+            margin-right: 15px;
+        }
+        
+        .category {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .content h2 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-size: 1.8rem;
+        }
+        
+        .content h3 {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: #34495e;
+            font-size: 1.4rem;
+        }
+        
+        .content p {
+            margin-bottom: 20px;
+        }
+        
+        .content ul, .content ol {
+            margin-bottom: 20px;
+            padding-left: 30px;
+        }
+        
+        .content li {
+            margin-bottom: 8px;
+        }
+        
+        .content code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 0.9em;
+        }
+        
+        .content pre {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+            border-left: 4px solid #1976d2;
+        }
+        
+        .content pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            color: #1976d2;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>LLM Platformization: How AI Models Are Becoming Developer Platforms</h1>
+            <div class="meta">
+                <span>📅 2026-03-12</span>
+                <span>👤 Arturo</span>
+                <span class="category">Platforms</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>LLM Platformization: How AI Models Are Becoming Developer Platforms</h1><br>
+<br>
+<p>The evolution of Large Language Models from standalone AI systems to comprehensive developer platforms represents one of the most significant shifts in the AI landscape. This "platformization" trend is transforming how developers build, deploy, and scale AI-powered applications.</p><br>
+<br>
+<h2>The Platformization Journey</h2><br>
+<br>
+<h3>Phase 1: Model-as-API (2020-2022)</h3><br>
+<ul><br>
+  <li>Simple text-in, text-out interfaces</li><br>
+  <li>Limited customization options</li><br>
+  <li>No tool integration</li><br>
+  <li>Basic rate limiting and quotas</li><br>
+<br>
+<h3>Phase 2: Model-with-Tools (2023-2024)</h3><br>
+<ul><br>
+  <li>Function calling capabilities</li><br>
+  <li>Basic retrieval augmentation</li><br>
+  <li>Limited context management</li><br>
+  <li>Emerging developer tools</li><br>
+<br>
+<h3>Phase 3: Full Platform (2025-Present)</h3><br>
+<ul><br>
+  <li>Comprehensive SDKs and frameworks</li><br>
+  <li>Integrated tool ecosystems</li><br>
+  <li>Advanced orchestration capabilities</li><br>
+  <li>Marketplace for extensions</li><br>
+  <li>Enterprise-grade management</li><br>
+<br>
+<h2>Core Platform Components</h2><br>
+<br>
+<h3>1. Unified API Layer</h3><br>
+<br>
+<p>Modern LLM platforms provide unified APIs that abstract away model complexity:</p><br>
+<br>
+<pre><code>python<br>
+<h1>Traditional approach - model-specific</h1><br>
+import openai<br>
+import anthropic<br>
+import cohere<br>
+<br>
+<p>def call_llm(provider, model, prompt):<br>
+    if provider == "openai":<br>
+        return openai.ChatCompletion.create(<br>
+            model=model,<br>
+            messages=[{"role": "user", "content": prompt}]<br>
+        )<br>
+    elif provider == "anthropic":<br>
+        return anthropic.Anthropic().messages.create(<br>
+            model=model,<br>
+            max_tokens=1000,<br>
+            messages=[{"role": "user", "content": prompt}]<br>
+        )<br>
+    # ... and so on</p><br>
+<br>
+<h1>Platform approach - unified interface</h1><br>
+from llm_platform import LLMPlatform<br>
+<br>
+platform = LLMPlatform()<br>
+response = platform.generate(<br>
+    model="best-available",  # Platform chooses optimal model<br>
+    prompt=prompt,<br>
+    tools=available_tools,<br>
+    context=user_context<br>
+)<br>
+</code></pre><br>
+<br>
+<h3>2. Tool Ecosystem Integration</h3><br>
+<br>
+<p>Platforms provide built-in access to tool ecosystems:</p><br>
+<br>
+<pre><code>python<br>
+class PlatformToolRegistry:<br>
+    def __init__(self):<br>
+        self.builtin_tools = self.load_builtin_tools()<br>
+        self.marketplace_tools = self.connect_to_marketplace()<br>
+        self.custom_tools = {}<br>
+    <br>
+    def get_tools_for_task(self, task_description):<br>
+        # Intelligent tool selection based on task<br>
+        relevant_tools = []<br>
+        <br>
+        # Check built-in tools<br>
+        for tool in self.builtin_tools:<br>
+            if self.tool_matches_task(tool, task_description):<br>
+                relevant_tools.append(tool)<br>
+        <br>
+        # Check marketplace for specialized tools<br>
+        marketplace_matches = self.search_marketplace(task_description)<br>
+        relevant_tools.extend(marketplace_matches)<br>
+        <br>
+        # Check custom tools<br>
+        for tool in self.custom_tools.values():<br>
+            if self.tool_matches_task(tool, task_description):<br>
+                relevant_tools.append(tool)<br>
+        <br>
+        return self.rank_tools_by_relevance(relevant_tools, task_description)<br>
+    <br>
+    def execute_tool(self, tool_name, parameters, context):<br>
+        # Unified execution with platform benefits<br>
+        tool = self.get_tool(tool_name)<br>
+        <br>
+        # Platform features:<br>
+        # 1. Automatic authentication handling<br>
+        # 2. Rate limiting and quota management<br>
+        # 3. Execution monitoring<br>
+        # 4. Error handling and retries<br>
+        # 5. Cost tracking<br>
+        <br>
+        return tool.execute(parameters, context)<br>
+</code></pre><br>
+<br>
+<h3>3. Advanced Orchestration Engine</h3><br>
+<br>
+<p>Platforms handle complex agent workflows:</p><br>
+<br>
+<pre><code>python<br>
+class PlatformOrchestrator:<br>
+    def __init__(self):<br>
+        self.workflow_registry = {}<br>
+        self.state_manager = PlatformStateManager()<br>
+        self.error_handler = PlatformErrorHandler()<br>
+    <br>
+    async def execute_workflow(self, workflow_id, input_data):<br>
+        workflow = self.workflow_registry[workflow_id]<br>
+        <br>
+        # Platform-managed execution<br>
+        execution_id = self.start_execution(workflow_id, input_data)<br>
+        <br>
+        try:<br>
+            # Execute with platform benefits<br>
+            result = await self.execute_with_platform_support(<br>
+                workflow,<br>
+                input_data,<br>
+                execution_id<br>
+            )<br>
+            <br>
+            # Record successful execution<br>
+            self.record_success(execution_id, result)<br>
+            return result<br>
+            <br>
+        except Exception as e:<br>
+            # Platform error handling<br>
+            recovery_result = await self.error_handler.handle(<br>
+                e, workflow, execution_id<br>
+            )<br>
+            <br>
+            if recovery_result['recovered']:<br>
+                return recovery_result['result']<br>
+            else:<br>
+                raise PlatformExecutionError(<br>
+                    f"Workflow failed: {recovery_result['reason']}"<br>
+                )<br>
+    <br>
+    async def execute_with_platform_support(self, workflow, input_data, execution_id):<br>
+        # Platform provides:<br>
+        # - Automatic state persistence<br>
+        # - Step-by-step monitoring<br>
+        # - Resource optimization<br>
+        # - Parallel execution where possible<br>
+        # - Cost-aware scheduling<br>
+        <br>
+        context = {<br>
+            'input': input_data,<br>
+            'execution_id': execution_id,<br>
+            'platform_features': self.get_available_features()<br>
+        }<br>
+        <br>
+        return await workflow.execute(context)<br>
+</code></pre><br>
+<br>
+<h2>Key Platform Features</h2><br>
+<br>
+<h3>Feature 1: Model Routing and Optimization</h3><br>
+<br>
+<pre><code>python<br>
+class ModelRouter:<br>
+    def __init__(self):<br>
+        self.models = self.load_available_models()<br>
+        self.performance_data = self.load_performance_history()<br>
+        self.cost_data = self.load_cost_data()<br>
+    <br>
+    def select_model(self, task, constraints):<br>
+        """Select optimal model based on task and constraints"""<br>
+        <br>
+        candidates = []<br>
+        <br>
+        for model in self.models:<br>
+            # Check if model meets constraints<br>
+            if not self.meets_constraints(model, constraints):<br>
+                continue<br>
+            <br>
+            # Calculate score based on multiple factors<br>
+            score = self.calculate_model_score(model, task)<br>
+            <br>
+            candidates.append({<br>
+                'model': model,<br>
+                'score': score,<br>
+                'estimated_cost': self.estimate_cost(model, task),<br>
+                'estimated_latency': self.estimate_latency(model, task)<br>
+            })<br>
+        <br>
+        # Select best candidate<br>
+        candidates.sort(key=lambda x: x['score'], reverse=True)<br>
+        return candidates[0]['model']<br>
+    <br>
+    def calculate_model_score(self, model, task):<br>
+        # Multi-factor scoring<br>
+        factors = {<br>
+            'accuracy': self.predict_accuracy(model, task),<br>
+            'latency': self.predict_latency(model, task),<br>
+            'cost': self.predict_cost(model, task),<br>
+            'reliability': self.get_reliability(model),<br>
+            'capability': self.get_capability_match(model, task)<br>
+        }<br>
+        <br>
+        # Weighted scoring based on task type<br>
+        weights = self.get_weights_for_task_type(task['type'])<br>
+        <br>
+        score = sum(<br>
+            factors[factor] * weights[factor]<br>
+            for factor in factors<br>
+        )<br>
+        <br>
+        return score<br>
+</code></pre><br>
+<br>
+<h3>Feature 2: Automatic Tool Discovery</h3><br>
+<br>
+<pre><code>python<br>
+class ToolDiscoveryService:<br>
+    def __init__(self):<br>
+        self.tool_registry = ToolRegistry()<br>
+        self.semantic_index = SemanticIndex()<br>
+    <br>
+    async def discover_tools(self, task_description, context):<br>
+        # Multiple discovery strategies<br>
+        <br>
+        # 1. Semantic search<br>
+        semantic_matches = await self.semantic_index.search(<br>
+            task_description,<br>
+            limit=10<br>
+        )<br>
+        <br>
+        # 2. Pattern matching based on task type<br>
+        pattern_matches = self.match_by_pattern(task_description)<br>
+        <br>
+        # 3. Collaborative filtering (tools used by similar tasks)<br>
+        collaborative_matches = await self.get_collaborative_recommendations(<br>
+            task_description,<br>
+            context.get('user_id')<br>
+        )<br>
+        <br>
+        # 4. Capability-based matching<br>
+        capability_matches = self.match_by_capability_requirements(<br>
+            self.extract_capabilities(task_description)<br>
+        )<br>
+        <br>
+        # Combine and rank results<br>
+        all_matches = self.combine_results([<br>
+            semantic_matches,<br>
+            pattern_matches,<br>
+            collaborative_matches,<br>
+            capability_matches<br>
+        ])<br>
+        <br>
+        return self.rank_and_deduplicate(all_matches)<br>
+    <br>
+    async def auto_compose_tools(self, complex_task):<br>
+        # Automatically compose tool chains for complex tasks<br>
+        task_decomposition = await self.decompose_task(complex_task)<br>
+        <br>
+        tool_chains = []<br>
+        for subtask in task_decomposition:<br>
+            tools = await self.discover_tools(subtask['description'], {})<br>
+            <br>
+            if tools:<br>
+                # Find optimal tool sequence<br>
+                chain = self.find_optimal_chain(tools, subtask)<br>
+                tool_chains.append({<br>
+                    'subtask': subtask,<br>
+                    'tools': chain,<br>
+                    'estimated_success': self.estimate_chain_success(chain)<br>
+                })<br>
+        <br>
+        return self.optimize_chains(tool_chains)<br>
+</code></pre><br>
+<br>
+<h3>Feature 3: State Management and Memory</h3><br>
+<br>
+<pre><code>python<br>
+class PlatformStateManager:<br>
+    def __init__(self):<br>
+        self.storage_backend = self.configure_storage()<br>
+        self.cache_layer = DistributedCache()<br>
+        self.sync_service = StateSyncService()<br>
+    <br>
+    async def save_state(self, session_id, state):<br>
+        # Platform-managed state persistence<br>
+        state_data = {<br>
+            'data': state,<br>
+            'metadata': {<br>
+                'session_id': session_id,<br>
+                'timestamp': time.time(),<br>
+                'size': self.calculate_size(state),<br>
+                'version': '1.0'<br>
+            }<br>
+        }<br>
+        <br>
+        # Automatic optimization<br>
+        optimized_state = await self.optimize_state(state_data)<br>
+        <br>
+        # Tiered storage<br>
+        if self.should_store_in_cache(optimized_state):<br>
+            await self.cache_layer.set(session_id, optimized_state)<br>
+        <br>
+        if self.should_store_in_persistent(optimized_state):<br>
+            await self.storage_backend.save(session_id, optimized_state)<br>
+        <br>
+        # Cross-device sync if needed<br>
+        if state.get('sync_across_devices'):<br>
+            await self.sync_service.sync_state(session_id, optimized_state)<br>
+    <br>
+    async def load_state(self, session_id, options=None):<br>
+        # Intelligent state loading<br>
+        options = options or {}<br>
+        <br>
+        # Try cache first<br>
+        cached = await self.cache_layer.get(session_id)<br>
+        if cached and not options.get('force_fresh'):<br>
+            return cached<br>
+        <br>
+        # Load from persistent storage<br>
+        persistent = await self.storage_backend.load(session_id)<br>
+        <br>
+        if persistent:<br>
+            # Update cache<br>
+            await self.cache_layer.set(session_id, persistent)<br>
+            <br>
+            # Apply transformations if needed<br>
+            if options.get('transform'):<br>
+                persistent = await self.transform_state(<br>
+                    persistent,<br>
+                    options['transform']<br>
+                )<br>
+            <br>
+            return persistent<br>
+        <br>
+        return None<br>
+    <br>
+    async def optimize_state(self, state):<br>
+        # Automatic state optimization<br>
+        optimized = state.copy()<br>
+        <br>
+        # 1. Remove transient data<br>
+        optimized['data'] = self.remove_transient_data(optimized['data'])<br>
+        <br>
+        # 2. Compress large values<br>
+        optimized['data'] = await self.compress_large_values(<br>
+            optimized['data']<br>
+        )<br>
+        <br>
+        # 3. Convert to efficient format<br>
+        optimized['data'] = self.convert_to_efficient_format(<br>
+            optimized['data']<br>
+        )<br>
+        <br>
+        # 4. Add indexing for quick retrieval<br>
+        optimized['indexes'] = self.create_indexes(optimized['data'])<br>
+        <br>
+        return optimized<br>
+</code></pre><br>
+<br>
+<h2>Developer Experience Innovations</h2><br>
+<br>
+<h3>1. Visual Workflow Builder</h3><br>
+<br>
+<pre><code>python<br>
+class VisualWorkflowBuilder:<br>
+    def __init__(self):<br>
+        self.components = self.load_components()<br>
+        self.templates = self.load_templates()<br>
+    <br>
+    def create_workflow_from_ui(self, ui_representation):<br>
+        # Convert visual representation to executable workflow<br>
+        nodes = ui_representation['nodes']<br>
+        edges = ui_representation['edges']<br>
+        <br>
+        workflow = {<br>
+            'version': '1.0',<br>
+            'nodes': [],<br>
+            'connections': [],<br>
+            'metadata': ui_representation.get('metadata', {})<br>
+        }<br>
+        <br>
+        for node in nodes:<br>
+            workflow_node = self.convert_ui_node_to_workflow_node(node)<br>
+            workflow['nodes'].append(workflow_node)<br>
+        <br>
+        for edge in edges:<br>
+            workflow['connections'].append({<br>
+                'from': edge['source'],<br>
+                'to': edge['target'],<br>
+                'condition': edge.get('condition'),<br>
+                'data_mapping': edge.get('data_mapping')<br>
+            })<br>
+        <br>
+        # Generate executable code<br>
+        executable = self.generate_executable_code(workflow)<br>
+        <br>
+        return {<br>
+            'workflow': workflow,<br>
+            'executable': executable,<br>
+            'validation': self.validate_workflow(workflow)<br>
+        }<br>
+    <br>
+    def generate_executable_code(self, workflow):<br>
+        # Generate platform-specific executable<br>
+        code = ["# Generated by Platform Workflow Builder"]<br>
+        code.append("from platform_sdk import Workflow")<br>
+        code.append("")<br>
+        code.append("workflow = Workflow()")<br>
+        code.append("")<br>
+        <br>
+        # Add nodes<br>
+        for node in workflow['nodes']:<br>
+            node_code = self.generate_node_code(node)<br>
+            code.append(node_code)<br>
+        <br>
+        # Add connections<br>
+        code.append("")<br>
+        code.append("# Connections")<br>
+        for conn in workflow['connections']:<br>
+            conn_code = f"workflow.connect('{conn['from']}', '{conn['to']}')"<br>
+            if conn.get('condition'):<br>
+                conn_code += f".when('{conn['condition']}')"<br>
+            code.append(conn_code)<br>
+        <br>
+        return "\n".join(code)<br>
+</code></pre><br>
+<br>
+<h3>2. Interactive Debugging and Testing</h3><br>
+<br>
+<pre><code>python<br>
+class PlatformDebugger:<br>
+    def __init__(self):<br>
+        self.breakpoint_manager = BreakpointManager()<br>
+        self.state_inspector = StateInspector()<br>
+        self.execution_tracer = ExecutionTracer()<br>
+    <br>
+    async debug_workflow(self, workflow_id, input_data):<br>
+        # Start debugging session<br>
+        session_id = self.start_debug_session(workflow_id)<br>
+        <br>
+        # Set initial breakpoints<br>
+        await self.breakpoint_manager.set_default_breakpoints(workflow_id)<br>
+        <br>
+        # Execute with debugging<br>
+        execution = await self.execute_with_debugging(<br>
+            workflow_id,<br>
+            input_data,<br>
+            session_id<br>
+        )<br>
+        <br>
+        # Provide interactive debugging interface<br>
+        return {<br>
+            'session_id': session_id,<br>
+            'execution': execution,<br>
+            'breakpoints': await self.breakpoint_manager.get_breakpoints(session_id),<br>
+            'state_snapshots': await self.state_inspector.get_snapshots(session_id),<br>
+            'trace': await self.execution_tracer.get_trace(session_id)<br>
+        }<br>
+    <br>
+    async def execute_with_debugging(self, workflow_id, input_data, session_id):<br>
+        # Modified execution that supports debugging<br>
+        workflow = self.load_workflow(workflow_id)<br>
+        <br>
+        context = {<br>
+            'input': input_data,<br>
+            'session_id': session_id,<br>
+            'debug_mode': True<br>
+        }<br>
+        <br>
+        # Override node execution to support debugging<br>
+        original_execute = workflow.execute_node<br>
+        <br>
+        async def debug_execute_node(node, node_context):<br>
+            # Check for breakpoints<br>
+            if await self.breakpoint_manager.should_break(<br>
+                session_id, node['id']<br>
+            ):<br>
+                await self.wait_for_debugger(session_id, node['id'])<br>
+            <br>
+            # Record state before execution<br>
+            await self.state_inspector.record_pre_state(<br>
+                session_id, node['id'], node_context<br>
+            )<br>
+            <br>
+            # Execute with tracing<br>
+            await self.execution_tracer.start_trace(session_id, node['id'])<br>
+            <br>
+            try:<br>
+                result = await original_execute(node, node_context)<br>
+                <br>
+                # Record state after execution<br>
+                await self.state_inspector.record_post_state(<br>
+                    session_id, node['id'], node_context, result<br>
+                )<br>
+                <br>
+                return result<br>
+                <br>
+            except Exception as e:<br>
+                # Record error<br>
+                await self.state_inspector.record_error(<br>
+                    session_id, node['id'], e<br>
+                )<br>
+                raise<br>
+                <br>
+            finally:<br>
+                await self.execution_tracer.end_trace(session_id, node['id'])<br>
+        <br>
+        # Replace execution method<br>
+        workflow.execute_node = debug_execute_node<br>
+        <br>
+        # Execute workflow<br>
+        return await workflow.execute(context)<br>
+</code></pre><br>
+<br>
+<h3>3. Automated Testing Framework</h3><br>
+<br>
+<code></code>`python<br>
+class PlatformTestFramework:<br>
+    def __init__(self):<br>
+        self.test_generator = TestGenerator()<br>
+        self.test_runner = TestRunner()<br>
+        self.coverage_analyzer = CoverageAnalyzer()<br>
+    <br>
+    async def generate_tests(self, workflow_id):<br>
+        # Generate comprehensive test suite<br>
+        workflow = self.load_workflow(workflow_id)<br>
+        <br>
+        tests = {<br>
+            'unit_tests': await self.generate_unit_tests(workflow),<br>
+            'integration_tests': await self.generate_integration_tests(workflow),<br>
+            'edge_case_tests': await self.generate_edge_case_tests(workflow),<br>
+            'performance_tests': await self.generate_performance_tests(workflow)<br>
+        }<br>
+        <br>
+        return tests<br>
+    <br>
+    async def run_test_suite(self, workflow_id, test_suite):<br>
+        results = {<br>
+            'passed': [],<br>
+            'failed': [],<br>
+            'skipped': [],<br>
+            'metrics': {}<br>
+        }<br>
+        <br>
+        for test in test_suite:<br>
+            test_result = await self.run_test(workflow_id, test)<br>
+            <br>
+            if test_result['status'] == 'passed':<br>
+                results['passed'].append(test_result)<br>
+            elif test_result['status'] == 'failed':<br>
+                results['failed'].append(test_result)<br>
+            else:<br>
+                results['skipped'].append(test_result)<br>
+            <br>
+            # Update metrics<br>
+            self.update_metrics(results['metrics'], test_result)<br>
+        <br>
+        # Calculate coverage<br>
+        results['coverage'] = await self.coverage_analyzer.calculate_coverage(<br>
+            workflow_id, test_suite, results<br>
+        )<br>
+        <br>
+        return results<br>
+    <br>
+    async def auto_fix_tests(self, workflow_id, failed_tests):<br>
+        # Attempt to automatically fix failing tests<br>
+        fixes = []<br>
+        <br>
+        for test in failed_tests:<br>
+            # Analyze failure<br>
+            analysis = await self.analyze_test_failure(test)<br>
+            <br>
+            if analysis['auto_fixable']:<br>
+                # Generate fix<br>
+                fix = await self.generate_fix(workflow_id, test, analysis)<br>
+                <br>
+                # Apply fix<br>
+                applied = await self.apply_fix(workflow_id, fix)<br>
+                <br>
+                if applied:<br>
+                    fixes.append({<br>
+                        'test': test['name'],<br>
+                        'fix': fix,<br>
+                        'applied': True<br>
+                    })<br>
+                else:<br>
+                    fixes.append({
+        </div>
+        
+        <a href="/docs/index.html" class="back-link">← Back to all articles</a>
+    </div>
+</body>
+</html>

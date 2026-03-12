@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Structured Prompting: Beyond Natural Language Instructions - AI Agents Blog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        
+        .header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        .meta span {
+            margin-right: 15px;
+        }
+        
+        .category {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .content h2 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-size: 1.8rem;
+        }
+        
+        .content h3 {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: #34495e;
+            font-size: 1.4rem;
+        }
+        
+        .content p {
+            margin-bottom: 20px;
+        }
+        
+        .content ul, .content ol {
+            margin-bottom: 20px;
+            padding-left: 30px;
+        }
+        
+        .content li {
+            margin-bottom: 8px;
+        }
+        
+        .content code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 0.9em;
+        }
+        
+        .content pre {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+            border-left: 4px solid #1976d2;
+        }
+        
+        .content pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            color: #1976d2;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Structured Prompting: Beyond Natural Language Instructions</h1>
+            <div class="meta">
+                <span>📅 2026-03-12</span>
+                <span>👤 Arturo</span>
+                <span class="category">Prompt Engineering</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Structured Prompting: Beyond Natural Language Instructions</h1><br>
+<br>
+<p>The evolution of prompt engineering has taken us from simple natural language instructions to sophisticated structured patterns that dramatically improve LLM performance. This shift represents a fundamental change in how we think about communicating with AI systems.</p><br>
+<br>
+<h2>The Limitations of Natural Language Prompts</h2><br>
+<br>
+<p>Traditional prompting relies on natural language, which has several limitations:</p><br>
+<br>
+<ol><br>
+  <li><strong>Ambiguity</strong>: Natural language is inherently ambiguous</li><br>
+</ol><br>
+2. <strong>Inconsistency</strong>: Slight wording changes can produce different results<br>
+3. <strong>Verbosity</strong>: Long prompts waste tokens and reduce clarity<br>
+4. <strong>Poor structure</strong>: Difficult to enforce specific output formats<br>
+5. <strong>Limited reasoning guidance</strong>: Hard to steer complex reasoning processes<br>
+<br>
+<h2>The Rise of Structured Prompting</h2><br>
+<br>
+<p>Structured prompting addresses these limitations by introducing formal patterns and constraints. These techniques treat prompts not as natural language but as structured programs that guide the LLM's reasoning process.</p><br>
+<br>
+<h3>Core Principles of Structured Prompting</h3><br>
+<br>
+<ol><br>
+  <li><strong>Explicit structure over implicit meaning</strong></li><br>
+</ol><br>
+2. <strong>Formal constraints over natural language suggestions</strong><br>
+3. <strong>Modular components over monolithic prompts</strong><br>
+4. <strong>Reasoning guidance over answer generation</strong><br>
+5. <strong>Validation rules over hope-based outputs</strong><br>
+<br>
+<h2>Key Structured Prompting Patterns</h2><br>
+<br>
+<h3>Pattern 1: Chain-of-Thought (CoT) Templates</h3><br>
+<br>
+<p>The original structured prompting breakthrough, CoT templates explicitly guide the reasoning process:</p><br>
+<br>
+<pre><code>python<br>
+<h1>Traditional CoT template</h1><br>
+cot_template = """<br>
+Question: {question}<br>
+<br>
+<p>Let's think step by step:</p><br>
+<br>
+<ol><br>
+  <li>First, I need to understand what the question is asking: {step1_analysis}</li><br>
+</ol><br>
+2. Next, I should identify the key information: {step2_information}<br>
+3. Then, I need to apply relevant concepts: {step3_concepts}<br>
+4. Finally, I can arrive at the answer: {step4_conclusion}<br>
+<br>
+Answer: {answer}<br>
+"""<br>
+</code></pre><br>
+<br>
+Modern variations include:<br>
+<ul><br>
+  <li><strong>Self-Consistency CoT</strong>: Multiple reasoning paths with voting</li><br>
+  <li><strong>Least-to-Most CoT</strong>: Breaking problems into sub-problems</li><br>
+  <li><strong>Program-of-Thought</strong>: Generating executable code as reasoning</li><br>
+<br>
+<h3>Pattern 2: ReAct (Reasoning + Acting)</h3><br>
+<br>
+<p>ReAct combines reasoning with tool usage in a structured format:</p><br>
+<br>
+<pre><code>python<br>
+react_template = """<br>
+Thought: I need to {current_goal}. <br>
+Action: {tool_name}[{tool_input}]<br>
+Observation: {tool_output}<br>
+... (this loop repeats)<br>
+Thought: I now have enough information to answer.<br>
+Answer: {final_answer}<br>
+"""<br>
+</code></pre><br>
+<br>
+<p>This structure forces the LLM to explicitly separate reasoning from actions, making the process more transparent and controllable.</p><br>
+<br>
+<h3>Pattern 3: Structured Output Templates</h3><br>
+<br>
+<p>Instead of hoping for JSON output, structured templates enforce it:</p><br>
+<br>
+<pre><code>python<br>
+json_template = """<br>
+Analyze the following text and extract the requested information.<br>
+<br>
+<p>Text: {text}</p><br>
+<br>
+<p>Please output ONLY valid JSON with this exact structure:<br>
+{<br>
+  "entities": [<br>
+    {<br>
+      "name": "string",<br>
+      "type": "person|organization|location|date",<br>
+      "confidence": 0.0-1.0<br>
+    }<br>
+  ],<br>
+  "sentiment": "positive|neutral|negative",<br>
+  "key_topics": ["string", "string", "string"]<br>
+}</p><br>
+<br>
+Output:<br>
+"""<br>
+</code></pre><br>
+<br>
+<h3>Pattern 4: Function Calling Schemas</h3><br>
+<br>
+<p>Modern LLMs support structured function calling with JSON schemas:</p><br>
+<br>
+<pre><code>python<br>
+function_schema = {<br>
+  "name": "analyze_document",<br>
+  "description": "Analyze a document and extract key information",<br>
+  "parameters": {<br>
+    "type": "object",<br>
+    "properties": {<br>
+      "summary": {"type": "string"},<br>
+      "key_points": {"type": "array", "items": {"type": "string"}},<br>
+      "sentiment": {"type": "string", "enum": ["positive", "neutral", "negative"]},<br>
+      "action_items": {"type": "array", "items": {"type": "string"}}<br>
+    },<br>
+    "required": ["summary", "key_points"]<br>
+  }<br>
+}<br>
+</code></pre><br>
+<br>
+<h2>Advanced Structured Techniques</h2><br>
+<br>
+<h3>Technique 1: Prompt Chaining</h3><br>
+<br>
+<p>Breaking complex tasks into a chain of structured prompts:</p><br>
+<br>
+<pre><code>python<br>
+class PromptChain:<br>
+    def __init__(self):<br>
+        self.steps = []<br>
+    <br>
+    def add_step(self, template, validator):<br>
+        self.steps.append({<br>
+            'template': template,<br>
+            'validator': validator,<br>
+            'output_key': f'step_{len(self.steps)}'<br>
+        })<br>
+    <br>
+    def execute(self, initial_input):<br>
+        context = {'input': initial_input}<br>
+        <br>
+        for step in self.steps:<br>
+            # Render template<br>
+            prompt = render_template(step['template'], context)<br>
+            <br>
+            # Get LLM response<br>
+            response = llm.generate(prompt)<br>
+            <br>
+            # Validate and parse<br>
+            parsed = step['validator'](response)<br>
+            <br>
+            # Update context<br>
+            context[step['output_key']] = parsed<br>
+        <br>
+        return context<br>
+</code></pre><br>
+<br>
+<h3>Technique 2: Constrained Generation</h3><br>
+<br>
+<p>Using token-level constraints to enforce output structure:</p><br>
+<br>
+<pre><code>python<br>
+<h1>Example: Generate code with specific imports</h1><br>
+constrained_prompt = """<br>
+Generate a Python function that calculates Fibonacci numbers.<br>
+<br>
+Constraints:<br>
+<ul><br>
+  <li>MUST import only: math, typing</li><br>
+  <li>MUST use type hints</li><br>
+  <li>MUST include docstring</li><br>
+  <li>MUST handle n <= 0 cases</li><br>
+  <li>MUST use iterative approach (not recursive)</li><br>
+<br>
+<p>Function:<br>
+"""</p><br>
+<br>
+<h1>The LLM is constrained to only generate tokens that satisfy these rules</h1><br>
+</code></pre><br>
+<br>
+<h3>Technique 3: Template Inheritance</h3><br>
+<br>
+<p>Creating reusable prompt templates with inheritance:</p><br>
+<br>
+<pre><code>python<br>
+class BaseTemplate:<br>
+    def __init__(self):<br>
+        self.header = """You are an expert AI assistant."""<br>
+        self.footer = """Please provide a clear, concise answer."""<br>
+    <br>
+    def render(self, <em></em>kwargs):<br>
+        return f"{self.header}\n\n{self.content(<em></em>kwargs)}\n\n{self.footer}"<br>
+<br>
+<p>class CodeReviewTemplate(BaseTemplate):<br>
+    def content(self, code, language):<br>
+        return f"""<br>
+Review this {language} code for quality issues:</p><br>
+<br>
+</code></pre>{language}<br>
+{code}<br>
+<pre><code><br>
+<br>
+Provide feedback in this exact format:<br>
+<ol><br>
+  <li><strong>Critical Issues</strong> (must fix)</li><br>
+</ol><br>
+2. <strong>Major Issues</strong> (should fix)<br>
+3. <strong>Minor Issues</strong> (could fix)<br>
+4. <strong>Suggestions</strong> (optional improvements)<br>
+"""<br>
+</code></pre><br>
+<br>
+<h2>Production Implementation Patterns</h2><br>
+<br>
+<h3>Pattern 1: Prompt Registry</h3><br>
+<br>
+<p>Maintaining a registry of validated prompt templates:</p><br>
+<br>
+<pre><code>python<br>
+class PromptRegistry:<br>
+    def __init__(self):<br>
+        self.templates = {}<br>
+    <br>
+    def register(self, name, template, validators=None):<br>
+        self.templates[name] = {<br>
+            'template': template,<br>
+            'validators': validators or [],<br>
+            'version': '1.0',<br>
+            'metrics': {'success_rate': 0.95, 'avg_tokens': 150}<br>
+        }<br>
+    <br>
+    def get(self, name, <em></em>kwargs):<br>
+        template = self.templates[name]<br>
+        prompt = render_template(template['template'], kwargs)<br>
+        <br>
+        # Add validation tokens if specified<br>
+        if template['validators']:<br>
+            prompt += f"\n\nValidation rules: {json.dumps(template['validators'])}"<br>
+        <br>
+        return prompt<br>
+</code></pre><br>
+<br>
+<h3>Pattern 2: A/B Testing Prompts</h3><br>
+<br>
+<p>Systematically testing prompt variations:</p><br>
+<br>
+<pre><code>python<br>
+class PromptABTest:<br>
+    def __init__(self, variants):<br>
+        self.variants = variants<br>
+        self.results = {v['name']: {'success': 0, 'total': 0} for v in variants}<br>
+    <br>
+    def test_variant(self, variant, test_cases):<br>
+        for test in test_cases:<br>
+            prompt = render_template(variant['template'], test['input'])<br>
+            response = llm.generate(prompt)<br>
+            <br>
+            # Evaluate response<br>
+            success = variant['evaluator'](response, test['expected'])<br>
+            <br>
+            # Record results<br>
+            self.results[variant['name']]['total'] += 1<br>
+            if success:<br>
+                self.results[variant['name']]['success'] += 1<br>
+    <br>
+    def get_best_variant(self):<br>
+        return max(<br>
+            self.variants,<br>
+            key=lambda v: self.results[v['name']]['success'] / self.results[v['name']]['total']<br>
+        )<br>
+</code></pre><br>
+<br>
+<h3>Pattern 3: Dynamic Prompt Selection</h3><br>
+<br>
+<p>Choosing prompts based on context:</p><br>
+<br>
+<pre><code>python<br>
+class DynamicPromptSelector:<br>
+    def __init__(self, classifier_model):<br>
+        self.classifier = classifier_model<br>
+        self.prompt_map = {<br>
+            'simple_qa': simple_qa_template,<br>
+            'complex_reasoning': reasoning_template,<br>
+            'code_generation': code_template,<br>
+            'data_analysis': analysis_template<br>
+        }<br>
+    <br>
+    def select_prompt(self, query, context):<br>
+        # Classify query type<br>
+        query_type = self.classifier.predict(query)<br>
+        <br>
+        # Get appropriate template<br>
+        template = self.prompt_map.get(query_type, default_template)<br>
+        <br>
+        # Add context-specific modifications<br>
+        if context.get('requires_citation'):<br>
+            template = add_citation_requirements(template)<br>
+        <br>
+        if context.get('technical_audience'):<br>
+            template = increase_technical_depth(template)<br>
+        <br>
+        return render_template(template, {'query': query, <em></em>context})<br>
+</code></pre><br>
+<br>
+<h2>Best Practices for Structured Prompting</h2><br>
+<br>
+<h3>1. Start with Validation</h3><br>
+Define how you'll validate outputs before writing the prompt.<br>
+<br>
+<h3>2. Use Explicit Delimiters</h3><br>
+Clear section markers improve parsing and reduce ambiguity.<br>
+<br>
+<h3>3. Implement Fallback Strategies</h3><br>
+Have backup prompts for when structured approaches fail.<br>
+<br>
+<h3>4. Monitor Prompt Performance</h3><br>
+Track success rates, token usage, and latency for each template.<br>
+<br>
+<h3>5. Version Your Prompts</h3><br>
+Treat prompts like code—version control and change management are essential.<br>
+<br>
+<h3>6. Test Extensively</h3><br>
+Test prompts with edge cases, adversarial inputs, and varied contexts.<br>
+<br>
+<h2>The Future of Structured Prompting</h2><br>
+<br>
+<p>We're moving toward:</p><br>
+<br>
+<ol><br>
+  <li><strong>Compiled prompts</strong>: Prompts that get optimized before execution</li><br>
+</ol><br>
+2. <strong>Prompt DSLs</strong>: Domain-specific languages for prompt construction<br>
+3. <strong>Automatic prompt optimization</strong>: ML systems that improve prompts<br>
+4. <strong>Formal verification</strong>: Proving prompt properties before deployment<br>
+5. <strong>Cross-model portability</strong>: Prompts that work across different LLMs<br>
+<br>
+<h2>Conclusion</h2><br>
+<br>
+<p>Structured prompting represents a paradigm shift in how we interact with LLMs. By moving from natural language suggestions to formalized instruction patterns, we gain control, consistency, and reliability. The most effective AI systems today don't just use better prompts—they use better prompt structures.</p><br>
+<br>
+<p>As the field evolves, we'll see even more sophisticated patterns emerge, blurring the line between "prompting" and "programming." The future belongs to those who can think structurally about how to guide AI reasoning, not just conversationally.</p>
+        </div>
+        
+        <a href="/docs/index.html" class="back-link">← Back to all articles</a>
+    </div>
+</body>
+</html>
