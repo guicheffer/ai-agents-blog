@@ -32,12 +32,11 @@ A modern blog about AI Agents built with Next.js 14 and deployed to GitHub Pages
 - Fast loading times
 
 ### 🚀 Deployment
-- Automated deployment via GitHub Actions
-- Deploys on every push to main branch
-- Free hosting on GitHub Pages
-- Custom domain support
 - **Static build in `/docs` directory** - ready to serve from any web server
 - **Automatic posts indexing** - `posts.md` generated from all markdown files
+- Manual deployment to GitHub Pages or any static host
+- Custom domain support
+- Fast static site generation
 
 ## 🏗️ Project Structure
 
@@ -127,9 +126,9 @@ The project automatically generates a static build in the `/docs` directory, rea
 
 ### 🚀 Using the `/docs` Build
 
-1. **Automatic Generation:**
-   - GitHub Actions builds to `/docs` on every push to `main`
-   - Manual build: `npm run build:docs`
+1. **Manual Build:**
+   - Run `npm run build:docs` to generate static site
+   - Run `npm run generate:posts-index` to update posts index
    - **Automatic posts indexing:** Generates `posts.md` with all posts listed
 
 2. **Directory Structure:**
@@ -145,15 +144,13 @@ The project automatically generates a static build in the `/docs` directory, rea
 3. **Automatic Posts Index (`posts.md`):**
    - Generated automatically from all `.md` files in `/posts`
    - Lists all posts with titles, dates, categories, and links
-   - Updated on every GitHub Actions build
+   - Run `npm run generate:posts-index` to update
    - Located in repository root: [posts.md](posts.md)
 
 4. **Serving Options:**
    - **Direct file serving:** Point any web server to `/docs`
    - **GitHub Pages:** Configure to serve from `/docs`
    - **CDN/Static hosting:** Upload `/docs` to Vercel, Netlify, etc.
-
-5. **GitHub Actions Workflow:**
    - `.github/workflows/deploy-docs.yml`
    - Builds on push to `main`
    - Uploads `/docs` as artifact
