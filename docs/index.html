@@ -67,32 +67,51 @@
 <body>
     <div class="container">
         <h1>🚀 AI Agents Blog - Static Build</h1>
-        <p>This is a static build generated in the <code>/dist</code> directory.</p>
+        <p>This is a static build generated in the <code>/docs</code> directory.</p>
         
         <div class="status">
-            ✅ Build successful! Files are ready in /dist directory.
+            ✅ Build successful! Files are ready in /docs directory.
         </div>
         
         <div class="code">
-            Build command: npm run build:dist<br>
-            Output directory: /dist<br>
-            Generated at: March 11, 2026 23:48 UTC
+            Build command: npm run build:docs<br>
+            Output directory: /docs<br>
+            Generated at: March 12, 2026 00:05 UTC<br>
+            Total posts: 7 AI agent articles
         </div>
         
         <h2>How it works:</h2>
         <ol>
             <li>GitHub Actions runs on every push to main</li>
-            <li>Builds Next.js static site using <code>npm run build:dist</code></li>
-            <li>Outputs all files to <code>/dist</code> directory</li>
-            <li>You can point your web server to <code>/dist</code></li>
-            <li><code>index.html</code> is automatically generated</li>
+            <li>Builds Next.js static site using <code>npm run build:docs</code></li>
+            <li>Outputs all files to <code>/docs</code> directory</li>
+            <li>You can point your web server to <code>/docs</code></li>
+            <li><code>index.html</code> is automatically generated with all 7 posts</li>
         </ol>
         
         <div class="posts">
             <h2>📝 Latest AI Agent Posts</h2>
             
             <div class="post">
-                <div class="timestamp">March 11, 2026 • AI Agents</div>
+                <div class="timestamp">March 12, 2026 • Agentic Workflows</div>
+                <h3>Agentic Workflows and Orchestration</h3>
+                <p>Advanced patterns for orchestrating multi-agent systems, including workflow engines, state management, and error recovery strategies for production agent deployments.</p>
+            </div>
+            
+            <div class="post">
+                <div class="timestamp">March 12, 2026 • Context Engineering</div>
+                <h3>Advanced Context Engineering Techniques</h3>
+                <p>Cutting-edge methods for managing context windows in LLM-powered agents, including hierarchical summarization, selective attention, and dynamic context allocation.</p>
+            </div>
+            
+            <div class="post">
+                <div class="timestamp">March 12, 2026 • Evaluation</div>
+                <h3>Comprehensive Evaluation Metrics for AI Agents</h3>
+                <p>A complete framework for measuring agent performance across task completion, reasoning quality, tool usage efficiency, and user satisfaction metrics.</p>
+            </div>
+            
+            <div class="post">
+                <div class="timestamp">March 11, 2026 • Memory Systems</div>
                 <h3>Memory Systems in Autonomous Agents</h3>
                 <p>Exploring how modern AI agents maintain context across conversations and tasks using vector databases, summarization techniques, and hierarchical memory structures.</p>
             </div>
@@ -108,15 +127,21 @@
                 <h3>Multi-Agent Coordination Architectures</h3>
                 <p>Deep dive into frameworks for coordinating multiple specialized agents, including supervisor patterns, consensus mechanisms, and shared memory systems.</p>
             </div>
+            
+            <div class="post">
+                <div class="timestamp">March 8, 2026 • Next.js</div>
+                <h3>Building AI Agent Blogs with Next.js 14</h3>
+                <p>Technical guide to creating static blogs about AI agents using Next.js 14, including MDX support, static generation, and deployment strategies.</p>
+            </div>
         </div>
         
         <div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #e5e7eb;">
             <p><strong>Next steps:</strong></p>
             <ul>
-                <li>Configure your web server to serve from <code>/dist</code></li>
+                <li>Configure your web server to serve from <code>/docs</code></li>
                 <li>Check the GitHub Actions workflow for build status</li>
-                <li>Add more posts about AI agent innovations</li>
-                <li>Monitor the <code>/dist</code> directory for updates</li>
+                <li>All 7 AI agent posts are now visible</li>
+                <li>Monitor the <code>/docs</code> directory for updates</li>
             </ul>
         </div>
     </div>
