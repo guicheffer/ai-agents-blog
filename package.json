@@ -9,8 +9,10 @@
     "lint": "next lint",
     "export": "next build && next export",
     "build:docs": "rm -rf docs && next build && next export -o docs",
+    "generate:posts-index": "node generate-posts-index.js",
+    "build:full": "npm run generate:posts-index && npm run build:docs",
     "deploy:gh-pages": "npm run export && cp -r out/* . && rm -rf out",
-    "deploy:docs": "npm run build:docs && echo 'Build gerado na pasta /docs'"
+    "deploy:docs": "npm run build:full && echo 'Build gerado na pasta /docs'"
   },
   "dependencies": {
     "@vercel/analytics": "^1.2.2",
